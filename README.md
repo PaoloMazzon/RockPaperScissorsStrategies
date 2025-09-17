@@ -1,6 +1,9 @@
 # Rock Paper Scissors
 
-Runs a simulation with 5 different strategies duking it out over 1000 matches.
+[![Build & Run](https://github.com/PaoloMazzon/RockPaperScissorsStrategies/actions/workflows/build-and-run.yaml/badge.svg)](https://github.com/PaoloMazzon/RockPaperScissorsStrategies/actions/workflows/build-and-run.yaml)
+
+Runs a simulation with 5 different strategies duking it out over a number of matches. Check the github actions
+to see the output without running it locally.
 
 ## Running
 

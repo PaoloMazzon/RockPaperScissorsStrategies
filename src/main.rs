@@ -249,9 +249,11 @@ fn main() {
         RpsPlayerRecord::new()
     );
 
-    // Compile 1000 random matches
+    let match_count = 1000000;
+
+    // Compile random matches
     let start_time = std::time::Instant::now();
-    for _ in 0..1000000 {
+    for _ in 0..match_count {
         // Pick two random players
         let mut players = vec!(
             RpsPlayer::Player1,
@@ -296,7 +298,7 @@ fn main() {
     let end_time = std::time::Instant::now();
     let between_time = end_time.duration_since(start_time).as_micros();
 
-    println!("Time to create records: {:.3}ms", between_time as f64 / 1000.0);
+    println!("Time to create {} records: {:.3}ms", match_count, between_time as f64 / 1000.0);
 
     let player_strats = vec!(
         "Random Ramsy is completely random",
