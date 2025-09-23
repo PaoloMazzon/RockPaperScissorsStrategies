@@ -14,7 +14,5 @@ jobs:
       with:
         toolchain: stable
         override: true
-    - name: Build
-      run: cargo build --verbose
     - name: Run
-      run: cargo run
+      run: cargo run --verbose --release

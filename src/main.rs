@@ -118,9 +118,14 @@ impl RpsPlayerRecord {
             l.iter().filter(|&&x| x == RpsChoice::Scissors).count());
     }
 
+    /// Returns the win loss ratio for this record
+    pub fn ratio(&self) -> f32 {
+        self.wins as f32 / self.losses as f32
+    }
+
     /// Prints record to stdout in a decent way
     pub fn print(&self) {
-        println!("Wins/Losses/Draws: {}/{}/{}, W/L = {:.2}", self.wins, self.losses, self.draws, self.wins as f32 / self.losses as f32);
+        println!("Wins/Losses/Draws: {}/{}/{}, W/L = {:.2}", self.wins, self.losses, self.draws, self.ratio());
         RpsPlayerRecord::print_list_stats(&self.winning_choices, "Wins".to_string());
         RpsPlayerRecord::print_list_stats(&self.losing_choices, "Losses".to_string());
         RpsPlayerRecord::print_list_stats(&self.choices, "Total Plays".to_string());
@@ -249,7 +254,7 @@ fn main() {
         RpsPlayerRecord::new()
     );
 
-    let match_count = 1000000;
+    let match_count = 1000;
 
     // Compile random matches
     let start_time = std::time::Instant::now();
@@ -314,4 +319,16 @@ fn main() {
         player_records[i].print();
         println!("===========================================================================");
     }
+
+    // Print just the W/L to make it easier to find
+    println!("Random Ramsy W/L: {:.2}\n\
+            Scissor Sally W/L: {:.2}\n\
+            Loser Larry W/L: {:.2}\n\
+            Groovy Garth W/L: {:.2}\n\
+            Copycat Candice W/L: {:.2}",
+            player_records[0].ratio(), 
+            player_records[1].ratio(), 
+            player_records[2].ratio(), 
+            player_records[3].ratio(), 
+            player_records[4].ratio());
 }
